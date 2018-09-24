@@ -7,7 +7,7 @@
         android:id="@+id/action_newGame"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:title="@string/newgame"/>
+        android:title="@string/new_game"/>
 
     <item
         android:id="@+id/action_settings"

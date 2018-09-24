@@ -9,6 +9,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class GameView extends View {
 
 	Game game;
@@ -25,7 +28,6 @@ public class GameView extends View {
 	 */
 	public GameView(Context context) {
 		super(context);
-
 	}
 
 	public GameView(Context context, AttributeSet attrs) {
@@ -40,6 +42,7 @@ public class GameView extends View {
 
 	//In the onDraw we put all our code that should be
 	//drawn whenever we update the screen.
+    //drawBitmap: Draw the specified bitmap, with its top/left corner at (x,y), using the specified paint, transformed by the current matrix.
 	@Override
 	protected void onDraw(Canvas canvas) {
 		//Here we get the height and weight
@@ -52,10 +55,15 @@ public class GameView extends View {
 		Paint paint = new Paint();
 		canvas.drawColor(Color.WHITE); //clear entire canvas to white color
 
-		//draw the pacman
-		canvas.drawBitmap(game.getPacBitmap(), game.getPacx(),game.getPacy(), paint);
-		//TODO loop through the list of goldcoins and draw them.
+        Log.d("GameView", "Gold coins: " + Arrays.toString(game.getCoins().toArray()));
+		for(GoldCoin c : game.getCoins()){
+		    if(!c.isTaken()){
+			    canvas.drawBitmap(game.getCoinBitMap(), c.getCoinx(), c.getCoiny(), paint);
+            }
+		}
+        //draw the pacman
+
+        canvas.drawBitmap(game.getPacBitmap(), game.getPacx(),game.getPacy(), paint);
 		super.onDraw(canvas);
 	}
-
 }
