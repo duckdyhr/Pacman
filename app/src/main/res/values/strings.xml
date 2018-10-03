@@ -8,4 +8,7 @@
     <string name="move_down">Down</string>
     <string name="move_up">Up</string>
     <string name="tv_loot">Loot:</string>
+    <string name="pause">Pause</string>
+    <string name="resume">Resume</string>
+    <string name="tv_timer">Timer:</string>
 </resources>

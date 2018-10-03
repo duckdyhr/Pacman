@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     Game game;
     private final int stepsize = 40;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,56 +26,35 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
-        gameView =  findViewById(R.id.gameView);
-        TextView tv_points = findViewById(R.id.points);
+        gameView = findViewById(R.id.gameView);
+        TextView pointsView = findViewById(R.id.tv_points);
+        TextView timerView = findViewById(R.id.tv_timer);
 
-        game = new Game(this,tv_points);
+        game = new Game(this, pointsView, timerView);
         game.setGameView(gameView);
         gameView.setGame(game);
 
-        game.newGame();
-
-        Button btnRight = findViewById(R.id.moveRight);
+        Button btnRight = findViewById(R.id.btn_moveRight);
         //listener of our pacman, when somebody clicks it
         btnRight.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        game.movePacmanRight(stepsize);
-                    }
-            });
+                (View view) -> game.movePacmanRight(stepsize));
 
-        Button btnLeft = findViewById(R.id.moveLeft);
+        Button btnLeft = findViewById(R.id.btn_moveLeft);
         btnLeft.setOnClickListener(
-                new View.OnClickListener(){
-                    @Override
-                    public void onClick(View view) {
-                        game.movePacmanLeft(stepsize);
-                    }
-                });
+                view -> game.movePacmanLeft(stepsize));
 
-        Button btnUp = findViewById(R.id.moveUp);
+        Button btnUp = findViewById(R.id.btn_moveUp);
         btnUp.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        game.movePacmanUp(stepsize);
-                    }
-                }
+                view -> game.movePacmanUp(stepsize)
         );
 
-        Button btnDown = findViewById(R.id.moveDown);
+        Button btnDown = findViewById(R.id.btn_moveDown);
         btnDown.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        game.movePacmanDown(stepsize);
-                    }
-                }
+                view -> game.movePacmanDown(stepsize)
         );
+
+        game.newGame();
     }
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -90,10 +70,11 @@ public class MainActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Toast.makeText(this,"Settings clicked",Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Settings clicked", Toast.LENGTH_LONG).show();
             return true;
         } else if (id == R.id.action_newGame) {
-            Toast.makeText(this,"New Game clicked",Toast.LENGTH_LONG).show();
+            //Toast.makeText(this,"New Game clicked",Toast.LENGTH_LONG).show();
+            game.newGame();
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -101,5 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickNewGame(View view) {
         game.newGame();
+    }
+
+    public void onClickResume(View view) {
+        game.resumeGame();
+    }
+
+    public void onClickPause(View view) {
+        game.pauseGame();
     }
 }

@@ -9,26 +9,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="4">
         <TextView
-            android:id="@+id/points"
-            android:textSize="24sp"
+            android:id="@+id/tv_points"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="@string/points"
-            android:gravity="center_vertical"/>
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"/>
+
+        <TextView
+            android:id="@+id/tv_timer"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/tv_timer"
+            android:gravity="center_vertical"
+            android:paddingLeft="5dp"/>
+
         <Button
-            android:id="@+id/btn_new_game"
-            android:textSize="24sp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/new_game"
-            android:layout_gravity="end"
-            android:onClick="onClickNewGame"/>
+            android:text="@string/pause"
+            android:onClick="onClickPause"/>
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/resume"
+            android:onClick="onClickResume"/>
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,25 +53,25 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/move_left"
-            android:id="@+id/moveLeft"/>
+            android:id="@+id/btn_moveLeft"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/move_up"
-            android:id="@+id/moveUp"/>
+            android:id="@+id/btn_moveUp"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/move_down"
-            android:id="@+id/moveDown"/>
+            android:id="@+id/btn_moveDown"/>
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/move_right"
-            android:id="@+id/moveRight"/>
+            android:id="@+id/btn_moveRight"/>
 
     </LinearLayout>
 
